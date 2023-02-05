@@ -1,7 +1,7 @@
 package com.sgtpo.event.endpoint.controoler;
 
+import com.sgtpo.core.model.Event;
 import com.sgtpo.event.endpoint.service.EventService;
-import com.sgtpo.event.model.Event;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

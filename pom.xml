@@ -15,12 +15,9 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <properties>
-        <java.version>17</java.version>
-    </properties>
-
     <modules>
         <module>event</module>
+        <module>core</module>
     </modules>
 
     <dependencies>
