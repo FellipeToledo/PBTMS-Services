@@ -12,12 +12,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="event" />
         <module name="core" />
+        <module name="discovery" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="core" options="-parameters" />
+      <module name="discovery" options="-parameters" />
       <module name="event" options="-parameters" />
     </option>
   </component>
