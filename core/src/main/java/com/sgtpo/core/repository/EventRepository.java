@@ -1,10 +1,10 @@
 package com.sgtpo.core.repository;
 
 import com.sgtpo.core.model.Event;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author Fellipe Toledo
  */
-public interface EventRepository extends PagingAndSortingRepository<Event, Long> {
+public interface EventRepository extends JpaRepository<Event, Long> {
 }
