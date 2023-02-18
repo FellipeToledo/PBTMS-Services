@@ -9,9 +9,9 @@
 		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
 	</parent>
 
-	<artifactId>discovery</artifactId>
+	<artifactId>discovery-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>discovery</name>
+	<name>discovery-server</name>
 	<description>Sgtpo's Service Discovery</description>
 
 	<properties>

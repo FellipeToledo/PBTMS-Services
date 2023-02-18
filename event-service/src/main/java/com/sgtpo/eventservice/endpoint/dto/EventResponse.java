@@ -1,4 +1,4 @@
-package com.sgtpo.event.endpoint.dto;
+package com.sgtpo.eventservice.endpoint.dto;
 
 import com.sgtpo.core.enums.EventType;
 import lombok.AllArgsConstructor;

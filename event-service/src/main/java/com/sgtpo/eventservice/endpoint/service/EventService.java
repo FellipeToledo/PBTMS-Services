@@ -1,10 +1,10 @@
-package com.sgtpo.event.endpoint.service;
+package com.sgtpo.eventservice.endpoint.service;
 
 
 import com.sgtpo.core.model.Event;
 import com.sgtpo.core.repository.EventRepository;
-import com.sgtpo.event.endpoint.dto.EventRequest;
-import com.sgtpo.event.endpoint.dto.EventResponse;
+import com.sgtpo.eventservice.endpoint.dto.EventRequest;
+import com.sgtpo.eventservice.endpoint.dto.EventResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
