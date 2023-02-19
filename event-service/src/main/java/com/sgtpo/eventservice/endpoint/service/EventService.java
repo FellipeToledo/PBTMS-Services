@@ -8,9 +8,12 @@ import com.sgtpo.eventservice.endpoint.dto.EventResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Fellipe Toledo
@@ -55,6 +58,10 @@ public class EventService {
                 .endDateTime(event.getEndDateTime())
                 .roads(event.getRoads())
                 .build();
+    }
+
+    public Event getEventById(Long id) {
+        return eventRepository.findById(id).get();
     }
 
 
