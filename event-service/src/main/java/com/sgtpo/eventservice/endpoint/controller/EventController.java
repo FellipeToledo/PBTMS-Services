@@ -1,7 +1,6 @@
 package com.sgtpo.eventservice.endpoint.controller;
 
 import com.sgtpo.core.model.Event;
-import com.sgtpo.core.repository.EventRepository;
 import com.sgtpo.eventservice.endpoint.dto.EventRequest;
 import com.sgtpo.eventservice.endpoint.dto.EventResponse;
 import com.sgtpo.eventservice.endpoint.service.EventService;
@@ -22,14 +21,13 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class EventController {
-    private final EventRepository eventRepository;
+
     private final EventService eventService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createEvent(@RequestBody EventRequest eventRequest){
         eventService.createEvent(eventRequest);
-
     }
 
     @GetMapping()
