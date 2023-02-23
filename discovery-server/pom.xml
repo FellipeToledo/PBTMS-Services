@@ -2,23 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
-		<groupId>com.sgtpo</groupId>
 		<artifactId>sgtpo-microservices</artifactId>
+		<groupId>com.sgtpo</groupId>
 		<version>1.0-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
 	</parent>
 
 	<artifactId>discovery-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>discovery-server</name>
-	<description>Sgtpo's Service Discovery</description>
 
 	<properties>
-		<java.version>17</java.version>
-		<!--<jaxb.version>2.3.1</jaxb.version>
-		<javax-activation.version>1.1.1</javax-activation.version>
-		<jaxb-runtime.version>4.0.1</jaxb-runtime.version>-->
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -26,41 +21,5 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
-		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-			<version>${jaxb.version}</version>
-		</dependency>
-		https://mvnrepository.com/artifact/javax.activation/activation
-		<dependency>
-			<groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId>
-			<version>${javax-activation.version}</version>
-		</dependency>
-		https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime
-		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-			<version>${jaxb-runtime.version}</version>
-		</dependency>-->
 	</dependencies>
-
-	<build>
-		<finalName>discovery</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<executable>true</executable>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.10.1</version>
-			</plugin>
-		</plugins>
-	</build>
 </project>

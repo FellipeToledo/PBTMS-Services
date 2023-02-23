@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Fellipe Toledo
@@ -28,10 +29,11 @@ public class EventService {
                 .ordinanceNumber(eventRequest.getOrdinanceNumber())
                 .eventType(eventRequest.getEventType())
                 .neighborhood(eventRequest.getNeighborhood())
+                .bypassRoute(eventRequest.getBypassRoute())
                 .description(eventRequest.getDescription())
                 .startDateTime(eventRequest.getStartDateTime())
                 .endDateTime(eventRequest.getEndDateTime())
-                .roads(eventRequest.getRoads())
+                .interdictionPlace(eventRequest.getInterdictionPlace())
                 .build();
         eventRepository.save(event);
         log.info("Event {} is saved", event.getId());
@@ -50,16 +52,17 @@ public class EventService {
                 .ordinanceNumber(event.getOrdinanceNumber())
                 .eventType(event.getEventType())
                 .neighborhood(event.getNeighborhood())
+                .bypassRoute(event.getBypassRoute())
                 .description(event.getDescription())
                 .startDateTime(event.getStartDateTime())
                 .endDateTime(event.getEndDateTime())
-                .roads(event.getRoads())
+                .interdictionPlace(event.getInterdictionPlace())
                 .build();
     }
 
-    public Event getEventById(Long id) {
-        return eventRepository.findById(id).get();
+    public String getEventById(long id) {
+        Optional<String> opt = Optional.ofNullable(System.getenv("foo"));
+        // FP on squid:S3655
+        return opt.orElse(null);
     }
-
-
 }

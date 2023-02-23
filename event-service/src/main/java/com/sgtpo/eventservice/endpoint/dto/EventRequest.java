@@ -24,5 +24,6 @@ public class EventRequest {
     private String description;
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
-    private String roads;
+    private String interdictionPlace;
+    private String bypassRoute;
 }

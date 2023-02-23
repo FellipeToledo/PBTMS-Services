@@ -34,7 +34,7 @@
       # org.hibernate: debug
   # Server configuration
   server:
-    port: 8081 #set your port
+    port: 8082 #set your port
   #Spring cloud Discovery Eureka Configuration
   eureka:
     client:

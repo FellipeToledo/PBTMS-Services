@@ -1,6 +1,5 @@
 package com.sgtpo.eventservice.endpoint.controller;
 
-import com.sgtpo.core.model.Event;
 import com.sgtpo.eventservice.endpoint.dto.EventRequest;
 import com.sgtpo.eventservice.endpoint.dto.EventResponse;
 import com.sgtpo.eventservice.endpoint.service.EventService;
@@ -37,8 +36,8 @@ public class EventController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Event> getEventById(@PathVariable long id) {
-        Event event = eventService.getEventById(id);
+    public ResponseEntity<String> getEventById(@PathVariable long id) {
+        String event = eventService.getEventById(id);
         return ResponseEntity.ok().body(event);
     }
 

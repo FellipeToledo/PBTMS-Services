@@ -56,9 +56,9 @@ public class Event implements AbstractEntity{
 
     @NotNull(message = "The field 'ordinance' is mandatory")
     @Column(nullable = false)
-    private String roads;
+    private String interdictionPlace;
 
-    private String detour;
+    private String bypassRoute;
 
     @Override
     public Long getId() {
