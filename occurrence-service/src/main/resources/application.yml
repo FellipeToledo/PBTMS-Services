@@ -1,0 +1,41 @@
+server:
+  port: 8081
+
+# Spring Boot configuration
+spring:
+  application:
+    name: occurrence-service
+
+  mvc:
+    format:
+      date-time: iso
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/event_db
+    username: postgres
+    password: Dev@010184
+    # JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: update # When you launch the application for the first time - switch "none" at "create"
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: true
+  # Logger configuration
+  # logging:
+    # pattern:
+      # console: "%d %-5level %logger : %msg%n"
+    # level:
+      # org.springframework: info
+      # org.hibernate: debug
+  # Server configuration
+  #Spring cloud Discovery Eureka Configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
