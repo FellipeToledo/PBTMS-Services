@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.sgtpo</groupId>
-		<artifactId>sgtpo-microservices</artifactId>
+		<groupId>com.pbtms</groupId>
+		<artifactId>pbtms-microservices</artifactId>
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
 	</parent>
@@ -12,14 +12,14 @@
 		<artifactId>event-service</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<name>event-service</name>
-		<description>SGTPO Event Service</description>
+		<description>PBTMS Event Service</description>
 
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>com.sgtpo</groupId>
+			<groupId>com.pbtms</groupId>
 			<artifactId>core</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
