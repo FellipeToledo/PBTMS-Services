@@ -1,10 +1,10 @@
 package com.pbtms.eventservice.endpoint.controller;
 
-import com.pbtms.eventservice.endpoint.dto.EventRequest;
-import com.pbtms.eventservice.endpoint.dto.EventResponse;
+import com.pbtms.core.response.ApiResponse;
+import com.pbtms.eventservice.endpoint.dto.EventDto;
 import com.pbtms.eventservice.endpoint.service.EventService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,29 +16,38 @@ import java.util.List;
  * @author Fellipe Toledo
  */
 @RestController
-@RequestMapping("v1/api/event")
-@Slf4j
+@RequestMapping("api/v1/event")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class EventController {
 
     private final EventService eventService;
 
-    @PostMapping
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public void createEvent(@RequestBody EventRequest eventRequest){
-        eventService.createEvent(eventRequest);
+    public ResponseEntity<EventDto> createEvent(@Valid @RequestBody EventDto eventDto) {
+        EventDto createEventDto = eventService.createEvent(eventDto);
+        return new ResponseEntity<>(createEventDto, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EventDto> updateEvent(@Valid @RequestBody EventDto eventDto, @PathVariable("id") long id) {
+        EventDto updatedEvent = this.eventService.updateEvent(eventDto, id);
+        return ResponseEntity.ok(updatedEvent);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse> deleteEvent(@PathVariable("id") long id) {
+        this.eventService.deleteEvent(id);
+        return new ResponseEntity<>(new ApiResponse("Event deleted Successfully", true), HttpStatus.OK);
     }
 
     @GetMapping()
-    @ResponseStatus(HttpStatus.OK)
-    public List<EventResponse> getAllEvents() {
-        return eventService.getAllEvents();
+    public ResponseEntity<List<EventDto>> getAllEvents() {
+        return ResponseEntity.ok(this.eventService.getAllEvents());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<String> getEventById(@PathVariable long id) {
-        String event = eventService.getEventById(id);
-        return ResponseEntity.ok().body(event);
+    public ResponseEntity<EventDto> getEventById(@PathVariable long id) {
+        return ResponseEntity.ok(this.eventService.getEventById(id));
     }
-
 }

@@ -1,22 +1,21 @@
 package com.pbtms.eventservice.endpoint.dto;
 
 import com.pbtms.core.enums.EventType;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 /**
  * @author Fellipe Toledo
  */
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class EventRequest {
+public class EventDto {
 
+    private Long id;
     private String ordinance;
     private int ordinanceNumber;
     private EventType eventType;
@@ -26,4 +25,6 @@ public class EventRequest {
     private LocalDateTime endDateTime;
     private String interdictionPlace;
     private String bypassRoute;
+
+
 }

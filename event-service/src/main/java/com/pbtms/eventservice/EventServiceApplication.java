@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan({"com.pbtms.core.model"})
 @EnableJpaRepositories({"com.pbtms.core.repository"})
 public class EventServiceApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(EventServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EventServiceApplication.class, args);
+    }
 
 }
