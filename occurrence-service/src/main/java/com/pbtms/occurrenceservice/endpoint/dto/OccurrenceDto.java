@@ -1,7 +1,9 @@
 package com.pbtms.occurrenceservice.endpoint.dto;
 
 import com.pbtms.core.enums.PublicAgency;
-import com.pbtms.core.enums.OccorrenceType;
+import com.pbtms.core.enums.OccurrenceType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,13 +19,16 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OccurrenceResponse {
-    private Long corId;
+public class OccurrenceDto {
+    private Long Id;
+    private String corId;
     private String interdictionPlace;
-    private OccorrenceType occurrenceType;
+    @Enumerated(EnumType.STRING)
+    private OccurrenceType occurrenceType;
     private String description;
     private String neighborhood;
-    private List<PublicAgency> publicAgenciesInvolved;
+    @Enumerated(EnumType.STRING)
+    private PublicAgency publicAgencyInvolved;
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
 }

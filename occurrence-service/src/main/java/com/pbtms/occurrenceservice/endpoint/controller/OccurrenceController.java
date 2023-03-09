@@ -1,8 +1,9 @@
 package com.pbtms.occurrenceservice.endpoint.controller;
 
-import com.pbtms.occurrenceservice.endpoint.dto.OccurrenceRequest;
-import com.pbtms.occurrenceservice.endpoint.dto.OccurrenceResponse;
+import com.pbtms.core.response.ApiResponse;
+import com.pbtms.occurrenceservice.endpoint.dto.OccurrenceDto;
 import com.pbtms.occurrenceservice.endpoint.service.OccurrenceService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,29 +17,39 @@ import java.util.List;
  * @author Fellipe Toledo
  */
 @RestController
-@RequestMapping("v1/api/occurrence")
+@RequestMapping("api/v1/occurrence")
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class OccurrenceController {
 
     private final OccurrenceService occurrenceService;
 
-    @PostMapping
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public void createOccurrence(@RequestBody OccurrenceRequest occurrenceRequest){
-        occurrenceService.createOccurrence(occurrenceRequest);
+    public ResponseEntity<OccurrenceDto> createOccurrence(@Valid @RequestBody OccurrenceDto occurrenceDto) {
+        OccurrenceDto createOccurrenceDto = occurrenceService.createOccurrence(occurrenceDto);
+        return new ResponseEntity<>(createOccurrenceDto, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<OccurrenceDto> updateOccurrence(@Valid @RequestBody OccurrenceDto occurrenceDto, @PathVariable("id") long id) {
+        OccurrenceDto updatedOccurrence = this.occurrenceService.updateOccurrence(occurrenceDto, id);
+        return ResponseEntity.ok(updatedOccurrence);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse> deleteOccurrence(@PathVariable("id") long id) {
+        this.occurrenceService.deleteOccurrence(id);
+        return new ResponseEntity<>(new ApiResponse("Occurrence deleted Successfully", true), HttpStatus.OK);
     }
 
     @GetMapping()
-    @ResponseStatus(HttpStatus.OK)
-    public List<OccurrenceResponse> getAllOccurrences() {
-        return occurrenceService.getAllOccurrences();
+    public ResponseEntity<List<OccurrenceDto>> getAllOccurrences() {
+        return ResponseEntity.ok(this.occurrenceService.getAllOccurrence());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<String> getOccurrenceById(@PathVariable long corId) {
-        String occurrence = occurrenceService.getOccurrenceById(corId);
-        return ResponseEntity.ok().body(occurrence);
+    public ResponseEntity<OccurrenceDto> getOccurrenceById(@PathVariable long id) {
+        return ResponseEntity.ok(this.occurrenceService.getOccurrenceById(id));
     }
-
 }

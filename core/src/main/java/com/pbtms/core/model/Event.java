@@ -4,10 +4,8 @@ import com.pbtms.core.enums.EventType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 /**
  * @author Fellipe Toledo
@@ -19,7 +17,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Event implements AbstractEntity{
+public class Event implements AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +28,7 @@ public class Event implements AbstractEntity{
     @Column(nullable = false)
     private String ordinance;
 
-    @NotNull(message = "The field 'ordinance' is mandatory")
+    @NotNull(message = "The field 'ordinanceNumber' is mandatory")
     @Column(nullable = false)
     private int ordinanceNumber;
 
@@ -38,26 +36,28 @@ public class Event implements AbstractEntity{
     @Enumerated
     private EventType eventType;
 
-    @NotNull(message = "The field 'ordinance' is mandatory")
+    @NotNull(message = "The field 'neighborhood' is mandatory")
     @Column(nullable = false)
     private String neighborhood;
 
-    @NotNull(message = "The field 'ordinance' is mandatory")
+    @NotNull(message = "The field 'description' is mandatory")
     @Column(nullable = false)
     private String description;
 
-    @NotNull(message = "The field 'ordinance' is mandatory")
+    @NotNull(message = "The field 'startDateTime' is mandatory")
     @Column(nullable = false)
     private LocalDateTime startDateTime;
 
-    @NotNull(message = "The field 'ordinance' is mandatory")
+    @NotNull(message = "The field 'endDateTime' is mandatory")
     @Column(nullable = false)
     private LocalDateTime endDateTime;
 
-    @NotNull(message = "The field 'ordinance' is mandatory")
+    @NotNull(message = "The field 'interdictionPlace' is mandatory")
     @Column(nullable = false)
     private String interdictionPlace;
 
+    @NotNull(message = "The field 'bypassRoute' is mandatory")
+    @Column(nullable = false)
     private String bypassRoute;
 
     @Override

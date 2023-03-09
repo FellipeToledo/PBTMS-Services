@@ -1,28 +1,37 @@
-  server:
-    port: 8080
+server:
+  port: 8080
+
   #Spring Boot configuration
-  spring:
-    application:
-      name: event-service
-    mvc:
-      format:
-        date-time: iso
-    datasource:
-      url: jdbc:postgresql://localhost:5432/event_db
-      username: postgres
-      password: Dev@010184
-    jpa:
-      open-in-view: true
-      hibernate:
-        ddl-auto: create-drop
-      properties:
-          dialect: org.hibernate.dialect.PostgreSQLDialect
-          format_sql: true
-      show-sql: true
+spring:
+  application:
+    name: event-service
+  mvc:
+    format:
+      date-time: iso
+  datasource:
+    url: jdbc:postgresql://localhost:5432/event_db
+    username: postgres
+    password: Dev@010184
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+
   #Spring cloud Discovery Eureka Configuration
-  eureka:
-    client:
-      service-url:
-        defaultZone: http://localhost:8761/eureka
-      fetch-registry: true
-      register-with-eureka: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+
+logging:
+  level:
+    sql: trace
+
+
+
+
